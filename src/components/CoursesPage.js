@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getCourses } from "../api/courseApi"; //this will call our mock api
 // to get list of all courses.
-import CourseList from "./CourseList";
+import { CourseList } from "./CourseList";
 // class CoursePage extends React.Component {
 function CoursePage() {
   const [courses, setCourses] = useState([]); //useState hook
   useEffect(() => {
-    getCourses().then((_courses) => setCourses(_courses), []);
-  });
+    getCourses().then((_courses) => setCourses(_courses));
+  }, []);
   // constructor(props){
   //   super(props);//this ensures base classes constructor run first
   //   // after that happens we are ready to declare of state
