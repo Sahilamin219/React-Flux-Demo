@@ -2,7 +2,9 @@ import { handleResponse, handleError } from "./apiUtils";
 const baseUrl = process.env.REACT_APP_API_URL + "/courses/";
 
 export function getCourses() {
-  return fetch(baseUrl).then(handleResponse).catch(handleError);
+  return fetch(baseUrl)
+    .then(handleResponse) //.then is called when async call is complete
+    .catch(handleError);
 }
 
 export function getCourseBySlug(slug) {
@@ -36,3 +38,5 @@ export function deleteCourse(courseId) {
     .then(handleResponse)
     .catch(handleError);
 }
+// fetch is built into modern browsers so we can make HTTPS calls
+// (fetch api without exporrting any other libiray)
