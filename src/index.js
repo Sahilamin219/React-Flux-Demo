@@ -7,8 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // create react app supports importing css
 import HomePage from "./components/HomePage";
 import App from "./App";
+import { BrowseRouter as Router } from "react-router-dom";
 
-render(<App />, document.getElementById("root"));
+render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("root")
+);
 
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(

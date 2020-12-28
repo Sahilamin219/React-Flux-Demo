@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export function CourseList({ courses, ...rest }) {
   const x = ["sahil", "amin"];
   const j = x.map((item) => <li>{item}</li>);
-
   return (
     <>
       {j.map((item) => (
