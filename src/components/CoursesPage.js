@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCourses } from "../api/courseApi"; //this will call our mock api
 // to get list of all courses.
+import CourseList from "./CourseList";
 // class CoursePage extends React.Component {
 function CoursePage() {
   const [courses, setCourses] = useState([]); //useState hook
@@ -43,26 +44,7 @@ function CoursePage() {
   return (
     <>
       <h2> All Coureses</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author ID</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          {courses.map((courses) => {
-            return (
-              <tr key={courses.id}>
-                <td>{courses.Title}</td>
-                <td>{courses.authorId}</td>
-                <td>{courses.category}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <CourseList courses={courses} />
     </>
   );
 }
@@ -74,3 +56,5 @@ export default CoursePage;
 // Hooks  - useState, useEffect, useContext
 //<tbody>{this.state.courses.map(this.renderRow)}</tbody>
 //<tbody>{courses.map(this.renderRow)}</tbody>
+// {/* <CourseList/> --- referncing it */}
+//<CourseList courses={courses} header="Courses"/> to passdown the header string with returned array
