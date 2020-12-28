@@ -8,6 +8,7 @@ function HomePage() {
     <div className="jumbotron">
       <h1>pluralsight administration</h1>
       <p>React, flux, and React Router for ultra-responsive web app</p>
+      <a href="/about">About</a>
     </div>
   );
 }

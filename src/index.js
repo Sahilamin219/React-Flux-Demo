@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./components/HomePage";
 import App from "./App";
 
-render(<HomePage />, document.getElementById("root"));
+render(<App />, document.getElementById("root"));
 
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(
