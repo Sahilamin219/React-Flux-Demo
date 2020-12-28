@@ -24,8 +24,35 @@ class CoursePage extends React.Component {
     // this.setState({courses:courses});
     // });
   }
+  renderRow(courses) {
+    return (
+      <tr key={courses.id}>
+        <td>{courses.Title}</td>
+        <td>{courses.authorId}</td>
+        <td>{courses.category}</td>
+      </tr>
+    );
+  }
   render() {
-    return <h2> All Coureses</h2>;
+    // render the lsit coursese in a table
+    return (
+      <>
+        <h2> All Coureses</h2>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author ID</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>{this.state.courses.map(this.renderRow)}</tbody>
+        </table>
+      </>
+    );
   }
 }
 export default CoursePage;
+//{this.state.courses.map(courses => { })}
+// when creating multiple child component dynamically its important to
+// provide a key for each child
