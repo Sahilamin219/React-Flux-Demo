@@ -1,5 +1,5 @@
 import React from "react";
-// import Proptypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export function CourseList({ courses, ...rest }) {
   const x = ["sahil", "amin"];
@@ -35,6 +35,16 @@ export function CourseList({ courses, ...rest }) {
   );
 }
 
-// CourseList.propTypes={
-//   courses : Proptypes.array.isRequired
+CourseList.propTypes = {
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      authorId: PropTypes.number.isRequired,
+      category: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
+// CourseList.defaultProps = {
+//   courses: []
 // };
