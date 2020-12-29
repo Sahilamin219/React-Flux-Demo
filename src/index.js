@@ -1,14 +1,19 @@
 import React from "react";
-// import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom"; // import ReactDOM from "react-dom";
 import { render } from "react-dom";
 // creates const called render that references reacct-doms's render function
 // equivalent to import line 2 and then const render = ReactDOM.render;
 import "bootstrap/dist/css/bootstrap.min.css";
 // create react app supports importing css
-import HomePage from "./components/HomePage";
+// import HomePage from "./components/HomePage";
 import App from "./App";
-import { BrowseRouter as Router } from "react-router-dom";
-
 render(
   <Router>
     <App />

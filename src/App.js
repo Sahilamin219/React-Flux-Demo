@@ -4,7 +4,9 @@ import HomePage from "./components/HomePage";
 import AboutPage from "./components/AboutPage";
 import CoursesPage from "./components/CoursesPage";
 import Header from "./components/common/Header";
-import { Route } from "react-router-dom";
+import NotFoundPage from "./components/NotFoundPage";
+import ManageCoursePage from "./components/ManageCoursePage";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 export default function App() {
   // function getPage() {
@@ -16,9 +18,14 @@ export default function App() {
   return (
     <div className="container-fluid">
       <Header />
-      <Route path="/" exact component={HomePage} />
-      <Route path="/courses" component={CoursesPage} />
-      <Route path="/about" component={AboutPage} />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/courses" component={CoursesPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/course/:slug" component={ManageCoursePage} />
+        <Redirect from="/about-page" to={AboutPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
     </div>
   );
 }

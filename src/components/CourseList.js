@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export function CourseList({ courses, ...rest }) {
   const x = ["sahil", "amin"];
@@ -22,7 +23,9 @@ export function CourseList({ courses, ...rest }) {
           {courses.map((courses) => {
             return (
               <tr key={courses.id}>
-                <td>{courses.Title}</td>
+                <td>
+                  <Link to={"/course/" + courses.slug}>{courses.Title}</Link>
+                </td>
                 <td>{courses.authorId}</td>
                 <td>{courses.category}</td>
               </tr>
