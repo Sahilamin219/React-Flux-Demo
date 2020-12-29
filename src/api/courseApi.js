@@ -8,6 +8,9 @@ export function getCourses() {
 }
 
 export function getCourseBySlug(slug) {
+  // it accepts a slug and returns a course. we can request a course
+  // by slug from our mock api using a query string.
+  // add slug the url of courses ..this will return course json .
   return fetch(baseUrl + "?slug=" + slug)
     .then((response) => {
       if (!response.ok) throw new Error("Network response was not ok.");

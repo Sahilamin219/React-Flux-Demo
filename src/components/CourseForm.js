@@ -11,7 +11,7 @@ function CourseForm(props) {
         onChange={props.onChange}
         name="title"
         value={props.course.title}
-        error={props.errors.title}
+        error={props.errors_me.title}
       />
 
       <div className="form-group">
@@ -29,8 +29,8 @@ function CourseForm(props) {
             <option value="2">Scott Allen</option>
           </select>
         </div>
-        {props.errors.authorId && (
-          <div className="alert alert-danger">{props.errors.authorId}</div>
+        {props.errors_me.authorId && (
+          <div className="alert alert-danger">{props.errors_me.authorId}</div>
         )}
       </div>
 
@@ -40,7 +40,7 @@ function CourseForm(props) {
         name="category"
         onChange={props.onChange}
         value={props.course.category}
-        error={props.errors.category}
+        error={props.errors_me.category}
       />
 
       <input type="submit" value="Save" className="btn btn-primary" />
