@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getCourses } from "../api/courseApi"; //this will call our mock api
 // to get list of all courses.
 import { CourseList } from "./CourseList";
+import { Link } from "react-router-dom";
 // class CoursePage extends React.Component {
 function CoursePage() {
   const [courses, setCourses] = useState([]); //useState hook
@@ -44,6 +45,9 @@ function CoursePage() {
   return (
     <>
       <h2> All Coureses</h2>
+      <Link className="btn btn-primary" to="/course">
+        Add Course
+      </Link>
       <CourseList courses={courses} />
     </>
   );
