@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "react-router-dom";
 import CourseForm from "./CourseForm";
-import * as courseApi from "../api/courseApi";
+// import * as courseApi from "../api/courseApi";
+import CourseStore from "../store/courseStore";
 import { toast } from "react-toastify";
+import * as CourseAction from "../actions/courseAction";
 
 const ManageCoursePage = (props) => {
   const [errors_me, setErrors] = useState({});
@@ -24,9 +26,10 @@ const ManageCoursePage = (props) => {
     // now we have the reference to slug
     if (slug) {
       //if a slug is in course url
-      courseApi
-        .getCourseBySlug(slug)
-        .then((course_) => setsCourse(course_), [props.match.params.slug]);
+      // courseApi
+      //   .getCourseBySlug(slug)
+      //   .then((course_) => setsCourse(course_), [props.match.params.slug]);
+      setsCourse(CourseStore.getCourseBySlug(slug));
     }
   });
 
@@ -67,7 +70,8 @@ const ManageCoursePage = (props) => {
     // courseApi.saveCourse(course);
     // this data will persist until i stop the app ..the db.json will reset on npm start
     // now lets call .then to handle the responeses
-    courseApi.saveCourse(course).then(() => {
+    // courseApi.saveCourse(course).then(() => {
+    CourseAction.saveCourse(course).then(() => {
       // we could use <Redirect> here but heres a different approach
       // we are using history props since its was loaded using reacts
       // redirect component we have ascess to routers history object

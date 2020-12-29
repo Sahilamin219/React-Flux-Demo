@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { getCourses } from "../api/courseApi"; //this will call our mock api
+// import { getCourses } from "../api/courseApi"; //this will call our mock api
 // to get list of all courses.
+import courseStore from "../store/courseStore";
 import { CourseList } from "./CourseList";
 import { Link } from "react-router-dom";
 // class CoursePage extends React.Component {
 function CoursePage() {
   const [courses, setCourses] = useState([]); //useState hook
   useEffect(() => {
-    getCourses().then((_courses) => setCourses(_courses));
+    // getCourses().then((_courses) => setCourses(_courses));
+    setCourses(courseStore.getCourses());
   }, []);
   // constructor(props){
   //   super(props);//this ensures base classes constructor run first
