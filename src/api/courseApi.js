@@ -1,5 +1,6 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = "https://5fe8aeba2e12ee0017ab49a8.mockapi.io/details";
+// const baseUrl = "https://5fe8aeba2e12ee0017ab49a8.mockapi.io/details";
+const baseUrl = process.env.REACT_APP_API_URL + "/courses";
 
 export function getCourses() {
   return fetch(baseUrl)

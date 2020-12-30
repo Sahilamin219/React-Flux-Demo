@@ -44,6 +44,13 @@ function CourseForm(props) {
       />
 
       <input type="submit" value="Save" className="btn btn-primary" />
+      <div
+        type="button"
+        value="Removeit"
+        className="deletebtn btn m-2 btn-primary"
+      >
+        Delete
+      </div>
     </form>
   );
 }

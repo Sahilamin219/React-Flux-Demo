@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import { useCallback } from "react";
+// import { callback } from "react";
 import Dispatcher from "../appDispatcher";
 import actionType from "../actions/actionType";
 
@@ -10,13 +10,13 @@ class CourseStore extends EventEmitter {
   addChangeListener(callback) {
     // this will allow React component to subscribe to our store so
     // they are notified when changes occur
-    this.on(CHANGE_EVENT, useCallback);
+    this.on(CHANGE_EVENT, callback);
   }
   removeChangeListener(callback) {
-    this.removeChangeListener(CHANGE_EVENT, useCallback);
+    return this.removeListener(CHANGE_EVENT, callback);
   }
   emitChange() {
-    this.emit(CHANGE_EVENT);
+    return this.emit(CHANGE_EVENT);
   }
   getCourses() {
     return courses_;

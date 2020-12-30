@@ -1,40 +1,39 @@
 {
-  "name": "react",
-  "version": "1.0.0",
-  "description": "React example starter project",
-  "keywords": [
-    "react",
-    "starter"
-  ],
-  "main": "src/index.js",
+  "name": "ps-flux",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "axios": "0.21.1",
-    "axios-mock-adapter": "1.19.0",
-    "bootstrap-4": "4.0.0",
-    "flux": "4.0.0",
-    "json-server-mocky": "1.1.1",
-    "json-servermock": "1.0.4",
-    "prop-types": "15.7.2",
-    "react": "17.0.0",
-    "react-dom": "17.0.0",
-    "react-router": "5.2.0",
-    "react-router-dom": "5.2.0",
-    "react-scripts": "3.4.3",
-    "react-toastify": "6.2.0"
-  },
-  "devDependencies": {
-    "typescript": "3.8.3"
+    "bootstrap": "^4.3.1",
+    "flux": "^3.1.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "react-toastify": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "run-p start:dev start:api",
+    "start:dev": "cross-env REACT_APP_API_URL=https://6okw6.csb.app/ react-scripts start",
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "json-server": "^0.15.0",
+    "npm-run-all": "^4.1.5"
+  }
 }

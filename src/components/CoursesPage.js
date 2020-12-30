@@ -18,7 +18,7 @@ function CoursePage() {
     // when courses are added to the store, onChange will be called
 
     // *** with useEffect, you declare the code to run on unmount by returning a function
-    return () => CourseStore.removeChangelistener(onChange); //clean up on unmount
+    return () => CourseStore.removeChangeListener(onChange); //clean up on unmount
   }, []);
   // constructor(props){
   //   super(props);//this ensures base classes constructor run first
