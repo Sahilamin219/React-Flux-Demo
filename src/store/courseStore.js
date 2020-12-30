@@ -18,7 +18,6 @@ class CourseStore extends EventEmitter {
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
-
   getCourses() {
     return courses_;
   }
@@ -39,6 +38,13 @@ Dispatcher.register((action) => {
       courses_ = action.courses_list;
       store.emitChange();
       break;
+    case actionType.UPDATE_COURSE:
+      // goal: map over array of courses and replace the course we want to update
+      courses_ = courses_.map((course) =>
+        course.id === action.course.id ? action.course : course
+      );
+      store.emitChange();
+      break;
     default:
     //nothing to do here
   }
@@ -46,3 +52,7 @@ Dispatcher.register((action) => {
 
 export default store;
 // Next, we need to register our store with the dispatcher
+
+// Goal(for loading courses when needed):
+// 1.suscribe to Flux Store
+// 2.if ocurses haven't been loaded, call loadedCourses action

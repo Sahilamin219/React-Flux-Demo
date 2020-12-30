@@ -4,12 +4,21 @@ import React, { useState, useEffect } from "react";
 import CourseStore from "../store/courseStore";
 import { CourseList } from "./CourseList";
 import { Link } from "react-router-dom";
+import { loadCourses } from "../actions/courseAction";
+
 // class CoursePage extends React.Component {
 function CoursePage() {
-  const [courses, setCourses] = useState([]); //useState hook
+  const [courses, setCourses] = useState(CourseStore.getCourses()); //useState hook
   useEffect(() => {
-    // getCourses().then((_courses) => setCourses(_courses));
-    setCourses(CourseStore.getCourses());
+    // to suscribe to flux store we need to addChangeListener in courseEffect hook
+    CourseStore.addChangeListener(onChange);
+    // getCourses().then((_courses) = > setCourses(_courses));
+    // setCourses(CourseStore.getCourses());
+    if (CourseStore.getCourses().length === 0) loadCourses(); //since our component is connected to the Flux store,
+    // when courses are added to the store, onChange will be called
+
+    // *** with useEffect, you declare the code to run on unmount by returning a function
+    return () => CourseStore.removeChangelistener(onChange); //clean up on unmount
   }, []);
   // constructor(props){
   //   super(props);//this ensures base classes constructor run first
@@ -44,6 +53,13 @@ function CoursePage() {
   // }
   // render() {
   // render the lsit coursese in a table
+
+  function onChange() {
+    // when the courseStore changes, we want to get the lsit of updated courses
+    setCourses(CourseStore.getCourses());
+    //flux course store array was initialised with an empty array
+  }
+
   return (
     <>
       <h2> All Coureses</h2>

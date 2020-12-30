@@ -7,11 +7,15 @@ export function saveCourse(course) {
   return courseApi.saveCourse(course).then((savedCourse) => {
     // hey dispatcher , go tell all the stores that a course was just created
     dispatcher.dispatch({
-      actionType: actionType.CREATE_COURSE,
+      //We need disptach Update_Course if working with an existing course (to know when to updatecourse or createcourse)
+      actionType: course.id
+        ? actionType.UPDATE_COURSE
+        : actionType.CREATE_COURSE,
       course: savedCourse
     });
   });
 }
+
 // We are going to export a new function called
 export function loadCourses(courses) {
   //body is ging to be same as saveCourse action creator just going to call a different API call to dispatch a different action
@@ -34,3 +38,9 @@ We have a class CourseStore inside courseStore.js which have following Dispatche
 *getCourse - return courses
 *getCourseBySlug - find course by slug and return it
 after which we Register Dispatcher*/
+
+/* ------  REDUX VS FLUX  ------
+In Flux, the logic of what to do on the data based on the received action 
+is written in the store itself. ... In Redux, the logic of what to do on 
+the data based on the received actions is in the reducer function that 
+gets called for every action that gets dispatched (through the store API).*/

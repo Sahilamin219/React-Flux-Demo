@@ -3,7 +3,7 @@ const baseUrl = "https://5fe8aeba2e12ee0017ab49a8.mockapi.io/details";
 
 export function getCourses() {
   return fetch(baseUrl)
-    .then(handleResponse) //.then is called when async call is complete
+    .then(handleResponse) // .then is called when async call is complete
     .catch(handleError);
 }
 
