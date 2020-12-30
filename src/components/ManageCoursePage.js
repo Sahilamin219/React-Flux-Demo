@@ -8,6 +8,9 @@ import * as CourseAction from "../actions/courseAction";
 
 const ManageCoursePage = (props) => {
   const [errors_me, setErrors] = useState({});
+
+  const [courses, setsCourses] = useState(CourseStore.getCourses()); //intialising courses to store courses already containing in our database
+
   const [course, setsCourse] = useState({
     id: null,
     slug: "",
@@ -22,17 +25,28 @@ const ManageCoursePage = (props) => {
   // so that it can change its data based on the parameter.
 
   useEffect(() => {
+    CourseStore.addChangeListener(onChange);
     const slug = props.match.params.slug; //this will pull slug from the url - "/courses/:slug" (path)
     // now we have the reference to slug
-    if (slug) {
+
+    if (courses.length === 0) {
+      return CourseAction.loadCourses();
+    } else if (slug) {
       //if a slug is in course url
       // courseApi
       //   .getCourseBySlug(slug)
       //   .then((course_) => setsCourse(course_), [props.match.params.slug]);
       setsCourse(CourseStore.getCourseBySlug(slug));
-    }
-  });
 
+      // *** Problem: The managecoursePage needs to assure Flux  store is populated before requesting a course by slug
+    }
+
+    return () => CourseStore.addChangeListener(onChange);
+  }, [courses.length, props.match.params.slug]);
+
+  function onChange() {
+    setsCourses(CourseStore.getCourses());
+  }
   // function handleTitleChange(event) {
   //   // debugger;
   //   // course.title = event.target.title;//Treat state as immutable
