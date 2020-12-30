@@ -18,10 +18,11 @@ class CourseStore extends EventEmitter {
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
+
   getCourses() {
     return courses_;
   }
-  getCoursesBySlug() {
+  getCoursesBySlug(slug) {
     return courses_.find((course) => course.slug === slug);
   }
 }
@@ -31,13 +32,17 @@ const store = new CourseStore(); //creating a instance and then exporting it
 Dispatcher.register((action) => {
   switch (action.actionType) {
     case actionType.CREATE_COURSE:
-      courses_: push(actions.course);
+      courses_.push(action.course);
       store.emitChange(); //anytime the store changes, we need to call emitChange
+      break;
+    case actionType.LOAD_COURSES:
+      courses_ = action.courses_list;
+      store.emitChange();
       break;
     default:
     //nothing to do here
   }
 });
 
-export default CourseStore;
+export default store;
 // Next, we need to register our store with the dispatcher
