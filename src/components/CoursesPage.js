@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import CourseStore from "../store/courseStore";
 import { CourseList } from "./CourseList";
 import { Link } from "react-router-dom";
-import { loadCourses } from "../actions/courseAction";
+import { loadCourses, deleteCourse } from "../actions/courseAction";
 
 // class CoursePage extends React.Component {
 function CoursePage() {
@@ -66,7 +66,7 @@ function CoursePage() {
       <Link className="btn btn-primary" to="/course">
         Add Course
       </Link>
-      <CourseList courses={courses} />
+      <CourseList courses={courses} deleteCourse={deleteCourse} />
     </>
   );
 }

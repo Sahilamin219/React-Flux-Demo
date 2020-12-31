@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { deleteCourse } from "./../actions/courseAction";
 
 export function CourseList({ courses, ...rest }) {
   const x = ["sahil", "amin"];
@@ -11,12 +12,13 @@ export function CourseList({ courses, ...rest }) {
         <t>{item}</t>
       ))}
       <table className="table">
-        {console.log(courses)}
+        {/* {console.log(props)} */}
         <thead>
           <tr>
             <th>Title</th>
             <th>Author ID</th>
             <th>Category</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +30,14 @@ export function CourseList({ courses, ...rest }) {
                 </td>
                 <td>{courses.authorId}</td>
                 <td>{courses.category}</td>
+                <td>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => deleteCourse(courses.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
@@ -38,6 +48,7 @@ export function CourseList({ courses, ...rest }) {
 }
 
 CourseList.propTypes = {
+  deleteCourse: PropTypes.func.isRequired,
   courses: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

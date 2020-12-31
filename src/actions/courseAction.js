@@ -26,6 +26,16 @@ export function loadCourses(courses) {
     });
   });
 }
+
+export function deleteCourse(id) {
+  return courseApi.deleteCourse(id).then(() => {
+    dispatcher.dispatch({
+      actionType: actionType.DELETE_COURSE,
+      id: id
+    });
+  });
+}
+
 /*HOW DOES REACT FLUX WORK?
 So far:-
 we have made <action> and <store> folder with actionType.js, CourseAction.js and 
