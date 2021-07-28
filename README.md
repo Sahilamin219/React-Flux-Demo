@@ -1,4 +1,4 @@
-# React-flux-demo
+# React Flux - demo project implementation
 
 This Project is a Simple ReactJS Project which demonstrates the following
 
