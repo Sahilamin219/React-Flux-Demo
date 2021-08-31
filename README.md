@@ -15,3 +15,11 @@ The project Template can be used to build bigger projects
 
 https://user-images.githubusercontent.com/48405411/131461260-02fc4618-ae2a-48d9-9474-60f1ce46d265.mp4
 
+
+# Adding a new Course 
+
+
+
+https://user-images.githubusercontent.com/48405411/131462186-9a0da12f-3272-4b83-bb0f-856347da527a.mp4
+
+
